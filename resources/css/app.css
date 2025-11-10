@@ -1,0 +1,87 @@
+/* ========== Gallery page ==========
+   body class="page-gallery"
+-----------------------------------*/
+.page-gallery { background:#f3f4f6; }
+.page-gallery .container{max-width:1100px;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem}
+.page-gallery .grid{display:grid;gap:1.5rem}
+@media (min-width:768px){.page-gallery .grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.page-gallery .card{background:#fff;border-radius:.75rem;box-shadow:0 10px 25px rgba(0,0,0,.08);overflow:hidden;display:flex;flex-direction:column}
+.page-gallery .img{background:#f3f4f6;aspect-ratio:16/10;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-weight:600}
+.page-gallery .img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block; /* removes inline-gap from images */
+}
+.page-gallery .p-4{padding:1rem}
+.page-gallery .p-6{padding:1.5rem}
+.page-gallery .badge{display:inline-block;background:#111827;color:#fff;font-size:.75rem;padding:.25rem .5rem;border-radius:999px}
+.page-gallery .title{font-weight:700;font-size:1.25rem;line-height:1.4;margin:.75rem 0}
+.page-gallery .muted{color:#6b7280;font-size:.875rem}
+.page-gallery .btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.5rem .75rem;text-decoration:none}
+.page-gallery .btn:hover{background:#f9fafb}
+.page-gallery .header{padding:2.5rem 0;text-align:center}
+.page-gallery .header h1{font-size:2rem;font-weight:800;margin:0}
+.page-gallery .sub{color:#6b7280;margin-top:.5rem}
+.page-gallery .footer{color:#6b7280;text-align:center;padding:2rem 0}
+.page-gallery .wrap{min-height:100vh;background:#f3f4f6;display:flex;flex-direction:column}
+.page-gallery .content{flex:1}
+
+.page-gallery .badge {
+  display: inline-block;
+  background: #111827;
+  color: #fff;
+  font-size: .75rem;
+  padding: .25rem .5rem;
+  border-radius: 999px;
+  width: auto;           
+  white-space: nowrap;  
+}
+
+.page-gallery .badge + .badge {
+  margin-left: .5rem;    
+}
+
+.page-gallery .p-6 {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-gallery .p-6 > .badge:first-of-type {
+  margin-top: 0;
+}
+
+.page-gallery .badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: .5rem;
+}
+
+
+/* ========== Post page ==========
+   body class="page-post"
+--------------------------------*/
+.page-post{background:#f3f4f6;color:#111827}
+.page-post .container{max-width:900px;margin:0 auto;padding:2rem 1rem}
+.page-post .header{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+.page-post .back{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;color:#374151;border:1px solid #e5e7eb;border-radius:.5rem;padding:.35rem .6rem}
+.page-post .back:hover{background:#fff}
+.page-post .card{background:#fff;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.08);overflow:hidden}
+.page-post .hero{width:100%;aspect-ratio:16/9;background:#eef2f7;display:flex;align-items:center;justify-content:center;color:#9ca3af;overflow:hidden}
+.page-post .hero img{width:100%;height:100%;object-fit:cover;display:block}
+.page-post .content{padding:1.5rem}
+.page-post .meta{color:#6b7280;font-size:.9rem;margin:.25rem 0 1rem}
+.page-post .title{font-size:2rem;line-height:1.2;margin:.25rem 0 .25rem;font-weight:800}
+.page-post .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.page-post .tag{background:#111827;color:#fff;font-size:.75rem;padding:.15rem .55rem;border-radius:999px}
+.page-post .prose p{line-height:1.75;margin:1rem 0}
+.page-post .prose h2{margin:1.5rem 0 .5rem;font-size:1.3rem}
+.page-post .footer{color:#6b7280;text-align:center;margin-top:2rem}
+
+/* Base reset used in both pages */
+*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}
+::after,::before{--tw-content:''}
+html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Figtree,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+body{margin:0}
