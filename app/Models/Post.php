@@ -9,19 +9,16 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Post
 {
-    // Return array of posts
     public static function all(): array
     {
         $files = File::files(resource_path('posts'));
 
-        // Sort by newest first
         usort($files, fn($a, $b) => $b->getMTime() <=> $a->getMTime());
 
         return array_map(function ($file) {
             $slug = pathinfo($file->getFilename(), PATHINFO_FILENAME);
             $html = File::get($file->getRealPath());
 
-            // pull title and header from the body
             $title   = self::extractFirst($html, '/<h1[^>]*>(.*?)<\/h1>/i') ?: Str::headline($slug);
             $excerpt = self::extractFirst($html, '/<p[^>]*>(.*?)<\/p>/i') ?:
                        '—';
@@ -35,7 +32,6 @@ class Post
         }, $files);
     }
 
-    // Load posts hero image and URL
     public static function find(string $slug): array
     {
         $path = resource_path("posts/{$slug}.html");
