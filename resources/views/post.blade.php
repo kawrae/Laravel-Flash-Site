@@ -24,9 +24,5 @@
       {!! $post !!}
     </div>
   </article>
-
-  <div class="text-center text-zinc-500 mt-6">
-    Laravel v{{ Illuminate\Foundation\Application::VERSION }} • PHP v{{ PHP_VERSION }}
-  </div>
 </div>
 @endsection
