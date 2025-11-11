@@ -4,26 +4,28 @@
 @section('body-class', 'page-post')
 
 @section('content')
-<div class="container">
-  <div class="header">
-    <a class="back" href="{{ url('/') }}">← Back to gallery</a>
+<div class="container py-6">
+  <div class="mb-4">
+    <a class="text-zinc-600 hover:text-rose-600 inline-flex items-center gap-2" href="{{ route('gallery.index') }}">
+      ← Back to gallery
+    </a>
   </div>
 
   <article class="card">
     @if(!empty($imageUrl))
-      <div class="hero">
+      <div class="post-hero">
         <img src="{{ $imageUrl }}" alt="{{ str_replace('-', ' ', $slug) }}">
       </div>
     @else
-      <div class="hero">Image Placeholder</div>
+      <div class="post-hero"></div>
     @endif
 
-    <div class="content">
+    <div class="p-6 prose prose-zinc max-w-none">
       {!! $post !!}
     </div>
   </article>
 
-  <div class="footer">
+  <div class="text-center text-zinc-500 mt-6">
     Laravel v{{ Illuminate\Foundation\Application::VERSION }} • PHP v{{ PHP_VERSION }}
   </div>
 </div>
