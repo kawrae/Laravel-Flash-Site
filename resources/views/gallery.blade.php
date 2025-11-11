@@ -15,7 +15,7 @@
       @foreach($posts as $p)
         <article class="card">
           <div class="img">
-            @if($p['imageUrl'])
+            @if(!empty($p['imageUrl']))
               <img src="{{ $p['imageUrl'] }}" alt="{{ $p['title'] }}">
             @else
               <span>Image Placeholder</span>
