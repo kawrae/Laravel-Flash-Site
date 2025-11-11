@@ -10,8 +10,13 @@
 
   @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
-<body class="@yield('body-class')">
+<body class="with-sticky @yield('body-class')">
 
+  @include('partials.nav')
+
+  {{-- Page content --}}
   @yield('content')
+
+  @includeIf('partials.footer')
 </body>
 </html>
