@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'About — Flash Site')
+@section('title', 'About — kawrae flash')
 
 @section('content')
   <div class="container" style="padding-block:2rem">
