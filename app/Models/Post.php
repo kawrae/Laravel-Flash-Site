@@ -40,11 +40,12 @@ class Post
             throw new ModelNotFoundException("Post [{$slug}] not found.");
         }
 
-        return Cache::remember("posts.{$slug}", 1200, function () use ($path, $slug) {
+        return Cache::remember("posts.v2.{$slug}", 1200, function () use ($path, $slug) {
             $post     = file_get_contents($path);
             $imageUrl = self::resolveImageUrl($slug);
+            $title    = self::extractFirst($post, '/<h1[^>]*>(.*?)<\/h1>/i') ?? Str::headline($slug);
 
-            return compact('post', 'imageUrl', 'slug');
+            return compact('post', 'imageUrl', 'slug', 'title');
         });
     }
 
