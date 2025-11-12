@@ -98,7 +98,7 @@
             <span>Secure a slot</span>
           </div>
 
-          <h3 class="mt-2 text-xl font-bold text-zinc-900 dark:text-white">Appointments & Flash</h3>
+          <h3 class="mt-2 text-xl font-bold text-zinc-900 dark:text-white">Appointments</h3>
           <p class="mt-1 text-zinc-600 dark:text-zinc-300 line-clamp-2">
             Reserve a flash design or book a session directly — simple, fast, confirmed.
           </p>
