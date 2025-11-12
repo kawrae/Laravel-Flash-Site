@@ -33,10 +33,11 @@ body {
   .nav-btn        { @apply shrink-0; }
 
   .site-link {
-    @apply text-zinc-600 dark:text-zinc-300 hover:text-red-600 dark:hover:text-red-400;
+    @apply text-zinc-600 dark:text-zinc-300 hover:text-rose-600 dark:hover:text-rose-400;
   }
+  
   .site-link-active {
-    @apply font-semibold text-zinc-900 dark:text-white;
+    @apply font-semibold text-rose-600 dark:text-rose-500;
   }
 
   .btn { @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 font-medium border text-rose-600 border-rose-600 bg-white transition dark:bg-transparent dark:text-rose-400 dark:border-rose-400; }
