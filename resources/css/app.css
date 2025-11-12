@@ -47,16 +47,21 @@ body {
   /* card */
   .card {
     @apply rounded-xl overflow-hidden border bg-white border-zinc-200
-           dark:bg-zinc-900 dark:border-zinc-800;
-    transform: translateZ(0);
-    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+          dark:bg-zinc-900 dark:border-zinc-800;
+    transition: box-shadow .22s ease, border-color .22s ease, transform .18s ease;
     box-shadow: 0 10px 25px rgba(0,0,0,.08);
-    will-change: transform, box-shadow;
+    will-change: auto;
   }
-  .card:hover,
-  .card:focus-within {
-    transform: translateY(-2px) scale(1.01);
+
+  .card:hover {
+    transform: translateY(-2px);
     box-shadow: 0 18px 40px rgba(10,20,30,.10);
+    border-color: rgb(133, 23, 51);
+  }
+  
+  .card:focus-within {
+    transform: none;
+    box-shadow: 0 0 0 3px rgba(225, 29, 72, .15), 0 12px 30px rgba(10,20,30,.10);
     border-color: rgb(133, 23, 51);
   }
 
@@ -70,8 +75,7 @@ body {
     will-change: transform;
   }
 
-  .card:hover .card-img img,
-  .card:focus-within .card-img img { transform: scale(1.02); }
+  .card:hover .card-img img { transform: scale(1.02); }
 
   /* badge */
   .badge {
@@ -85,7 +89,7 @@ body {
   .hero {
     @apply relative border-b text-center text-zinc-100 border-zinc-200 dark:border-zinc-800;
     background:
-      linear-gradient(180deg, rgba(145,4,4,.78), rgba(0,0,0,.78)),
+      linear-gradient(180deg, rgba(145, 4, 39, 0.78), rgba(0,0,0,.78)),
       url('/images/tartan.jpg'),
       linear-gradient(135deg, #0b1324, #0b1324);
     background-size: cover;
@@ -100,14 +104,39 @@ body {
   .post-hero { @apply bg-zinc-100 dark:bg-zinc-800 aspect-[16/10] overflow-hidden; }
   .post-hero img { @apply w-full h-full object-cover; }
 
+  .divider { @apply h-px w-full bg-zinc-200 dark:bg-zinc-800; }
+
   /* footer */
-  .footer-gradient { @apply bg-gradient-to-r from-red-900 to-black }
+  .footer-gradient { @apply bg-gradient-to-r from-rose-900 to-black }
   .footer-inner    { @apply container py-6 md:py-8 flex items-center justify-between gap-4 flex-wrap; }
   .footer-link     { @apply text-white/90 hover:text-red-400 transition; }
 }
 
 /* utilities */
 @layer utilities {
-  .will-animate { @apply opacity-0; }
   .container-main { @apply container py-8 md:py-12 lg:py-16; }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: scale(.98); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  .animate-fade-up { animation: fade-up .5s ease both; }
+  .animate-fade    { animation: fade .6s ease both; }
+  .animate-pop     { animation: pop .32s ease both; }
+
+  .anim-delay-100 { animation-delay: .1s; }
+  .anim-delay-200 { animation-delay: .2s; }
+  .anim-delay-300 { animation-delay: .3s; }
+  .anim-delay-400 { animation-delay: .4s; }
+
+  .shadow-card { box-shadow: 0 10px 25px rgba(0,0,0,.08); }
 }
