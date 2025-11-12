@@ -51,15 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // dark mode toggle
-const toggle = document.getElementById('theme-toggle');
-
-if (toggle) {
-  toggle.addEventListener('click', () => {
+document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
+  btn.addEventListener('click', () => {
     const root = document.documentElement;
     const isDark = root.classList.contains('dark');
     const next = isDark ? 'light' : 'dark';
 
     root.classList.toggle('dark', next === 'dark');
     localStorage.setItem('theme', next);
+
+    document.querySelectorAll('[data-theme-toggle]').forEach(b =>
+      b.setAttribute('aria-pressed', String(next === 'dark'))
+    );
   });
-}
+});
