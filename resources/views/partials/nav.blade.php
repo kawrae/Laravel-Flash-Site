@@ -1,14 +1,33 @@
 <nav class="site-nav">
   <div class="site-nav-inner">
 
+  @if (request()->routeIs('home'))
+    <a href="{{ route('home') }}" class="site-brand flex items-center group" aria-label="Flash Site">
+      <img src="/images/logo/logo2.webp" alt="Flash Site Logo"
+          class="h-8 w-auto object-contain block group-hover:hidden dark:hidden" />
+
+      <img src="/images/logo/logo1.webp" alt="Flash Site Logo Hover"
+          class="h-8 w-auto object-contain hidden group-hover:block dark:hidden dark:group-hover:hidden" />
+
+      <img src="/images/logo/logo2.webp" alt="Flash Site Logo Dark"
+          class="h-8 w-auto object-contain hidden dark:block dark:group-hover:hidden" />
+
+      <img src="/images/logo/logo3.webp" alt="Flash Site Logo Dark Hover"
+          class="h-8 w-auto object-contain hidden dark:group-hover:block" />
+    </a>
+  @else
     <a href="{{ route('home') }}" class="site-brand flex items-center group" aria-label="Flash Site">
       <img src="/images/logo/logo1.webp" alt="Flash Site Logo"
-           class="h-8 w-auto object-contain block group-hover:hidden dark:hidden" />
-      <img src="/images/logo/logo2.webp" alt="Flash Site Logo Alt"
-           class="h-8 w-auto object-contain hidden group-hover:block dark:block dark:group-hover:hidden" />
-      <img src="/images/logo/logo3.webp" alt="Flash Site Logo Dark Hover"
-           class="h-8 w-auto object-contain hidden dark:hidden dark:group-hover:block" />
+          class="h-8 w-auto object-contain block group-hover:hidden dark:hidden" />
+      <img src="/images/logo/logo2.webp" alt="Flash Site Logo Hover"
+          class="h-8 w-auto object-contain hidden group-hover:block dark:group-hover:hidden" />
+
+      <img src="/images/logo/logo3.webp" alt="Flash Site Logo Dark"
+          class="h-8 w-auto object-contain hidden dark:block dark:group-hover:hidden" />
+      <img src="/images/logo/logo2.webp" alt="Flash Site Logo Dark Hover"
+          class="h-8 w-auto object-contain hidden dark:group-hover:block" />
     </a>
+  @endif
 
     <div class="flex items-center gap-2 md:hidden">
       <button
