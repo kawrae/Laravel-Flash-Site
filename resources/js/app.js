@@ -32,3 +32,34 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-lightbox-close]').forEach(el => el.addEventListener('click', close));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && dialog.open) close(); });
 });
+
+// hamburger icon
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.querySelector('[data-nav-toggle]');
+  const mobile = document.getElementById('site-menu-mobile');
+
+  if (!btn || !mobile) return;
+
+  const open  = () => { mobile.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); };
+  const close = () => { mobile.classList.add('hidden');   btn.setAttribute('aria-expanded', 'false'); };
+  const toggle = () => (mobile.classList.contains('hidden') ? open() : close());
+
+  btn.addEventListener('click', toggle);
+  document.addEventListener('keydown', (e) => e.key === 'Escape' && close());
+  window.addEventListener('resize', () => { if (window.innerWidth >= 768) close(); });
+  mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+});
+
+// dark mode toggle
+const toggle = document.getElementById('theme-toggle');
+
+if (toggle) {
+  toggle.addEventListener('click', () => {
+    const root = document.documentElement;
+    const isDark = root.classList.contains('dark');
+    const next = isDark ? 'light' : 'dark';
+
+    root.classList.toggle('dark', next === 'dark');
+    localStorage.setItem('theme', next);
+  });
+}
