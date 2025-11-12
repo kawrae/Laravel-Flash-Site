@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', ($title ?? 'Post').' — kawrae flash')
+@section('title', (($title ?? \Illuminate\Support\Str::headline($slug)) . ' - kawrae flash'))
 @section('body-class', 'page-post')
 
 @section('content')
@@ -28,7 +28,7 @@
           >
             <img
               src="{{ $imageUrl }}"
-              alt="{{ str_replace('-', ' ', $slug) }}"
+              alt="{{ ($title ?? str_replace('-', ' ', $slug)) }}"
               class="w-full h-auto object-contain aspect-[4/5] transition duration-300 group-hover:scale-[1.01]"
               loading="eager"
               decoding="async"
@@ -49,8 +49,8 @@
 
         <div class="mt-6 flex flex-wrap gap-3">
           @if(!empty($imageUrl))
-            <a href="{{ $imageUrl }}" download class="btn">Download image</a>
-            <a href="{{ $imageUrl }}" target="_blank" class="btn">Open original</a>
+            <a href="{{ $imageUrl }}" download="{{ ($title ?? $slug) }}.jpg" class="btn">Download image</a>
+            <a href="{{ $imageUrl }}" target="_blank" rel="noopener" class="btn">Open original</a>
           @endif
           <a href="{{ route('gallery.index') }}" class="btn">Back to gallery</a>
         </div>
