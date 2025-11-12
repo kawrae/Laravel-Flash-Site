@@ -4,12 +4,14 @@
 @section('body-class', 'page-commissions')
 
 @section('content')
-<section class="hero">
-  <div class="hero-inner container">
-    <h1 class="hero-title">Request a Custom Commission</h1>
-    <p class="hero-sub">Describe your idea, size, placement and references. I’ll reply with availability and a quote.</p>
-  </div>
-</section>
+  <section class="hero">
+    <div class="hero-inner container" data-stagger data-stagger-type="fade-up" data-stagger="0.12">
+      <h1 class="hero-title" data-anim="fade-up">Request a Custom Commission</h1>
+      <p class="hero-sub" data-anim="fade-up" data-delay="0.08">
+       Describe your idea, size, placement and references. I'll reply with availability and a quote.
+      </p>
+    </div>
+  </section>
 
 <div class="container-main">
   {{-- Status / errors --}}

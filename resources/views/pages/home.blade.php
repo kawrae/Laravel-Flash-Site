@@ -26,7 +26,7 @@
       data-stagger-children="article.card"
       data-stagger="0.12"
       >
-      <article class="card group" data-anim="slide-left">
+      <article class="card group animate-fade-up">
         <div class="card-img">
           @php $img = './images/features/gallery.webp'; @endphp
           @if(file_exists(public_path($img)))
@@ -55,7 +55,7 @@
         </div>
       </article>
 
-      <article class="card group" data-anim="slide-left">
+      <article class="card group animate-fade-up">
         <div class="card-img">
           @php $img = '/images/features/commissions.webp'; @endphp
           @if(file_exists(public_path($img)))
@@ -84,7 +84,7 @@
         </div>
       </article>
 
-      <article class="card group" data-anim="slide-left">
+      <article class="card group animate-fade-up">
         <div class="card-img">
           @php $img = '/images/features/studio.webp'; @endphp
           @if(file_exists(public_path($img)))

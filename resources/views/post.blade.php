@@ -12,8 +12,7 @@
     ← Back to gallery
   </a>
 
-  <article
-    class="rounded-2xl border overflow-hidden shadow-card
+  <article class="rounded-2xl border overflow-hidden shadow-card animate-fade-up
            bg-white border-zinc-200
            dark:bg-zinc-900 dark:border-zinc-800">
     <div class="grid lg:grid-cols-2">

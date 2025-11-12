@@ -6,9 +6,11 @@
 @section('content')
 <div class="wrap">
   <section class="hero">
-    <div class="hero-inner container">
-      <h1 class="hero-title">Gallery</h1>
-      <p class="hero-sub">Drawings from my sketchbooks available for your skin</p>
+    <div class="hero-inner container" data-stagger data-stagger-type="fade-up" data-stagger="0.12">
+      <h1 class="hero-title" data-anim="fade-up">Gallery</h1>
+      <p class="hero-sub" data-anim="fade-up" data-delay="0.08">
+        Drawings from my sketchbooks available for your skin.
+      </p>
     </div>
   </section>
 
@@ -18,7 +20,7 @@
         data-stagger-step="90">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       @foreach($posts as $p)
-        <article class="card will-animate">
+        <article class="card animate-fade-up">
           <div class="card-img">
             @if(!empty($p['imageUrl']))
               <img src="{{ $p['imageUrl'] }}" alt="{{ $p['title'] }}">
