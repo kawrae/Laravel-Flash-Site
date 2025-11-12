@@ -1,10 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
+
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
   ],
+
   theme: {
     container: {
       center: true,
@@ -13,8 +16,8 @@ export default {
         sm: "600px",
         md: "728px",
         lg: "984px",
-        xl: "1220px",
-        "2xl": "1220px",
+        xl: "1100px",
+        "2xl": "1150px",
       },
     },
 
