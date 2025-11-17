@@ -18,6 +18,18 @@
         data-stagger
         data-stagger-type="fade-up"
         data-stagger-step="90">
+
+    @auth
+      @can('admin')
+        <div class="flex justify-end mb-6 animate-fade-up">
+          <a href="{{ route('admin.posts.create') }}"
+            class="px-4 py-2 rounded-lg bg-rose-600 text-white font-medium hover:bg-rose-700 transition">
+            Add Post
+          </a>
+        </div>
+      @endcan
+    @endauth
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       @foreach($posts as $p)
         <article class="card animate-fade-up">

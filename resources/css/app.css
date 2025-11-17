@@ -25,6 +25,17 @@ body {
 
 /* nav */
 @layer components {
+  .nav-admin {
+    @apply px-2 py-1 rounded-full text-sm font-normal
+      bg-rose-600/30 text-rose-800
+      dark:bg-rose-500/30 dark:text-rose-200
+      transition-colors;
+  }
+
+  .nav-admin:hover {
+    @apply bg-rose-600/20 dark:bg-rose-500/20;
+  }
+
   .site-nav       { @apply sticky top-0 z-50 border-b bg-white/85 backdrop-blur dark:bg-zinc-900/80 border-zinc-200 dark:border-zinc-800; }
   .site-nav-inner { @apply container h-14 flex items-center justify-between; }
   .site-brand     { @apply font-semibold text-zinc-900 dark:text-white; }

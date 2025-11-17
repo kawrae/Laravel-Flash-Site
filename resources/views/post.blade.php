@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', (($title ?? \Illuminate\Support\Str::headline($slug)) . ' - kawrae flash'))
+@section('title', (($post->title ?? \Illuminate\Support\Str::headline($post->slug)) . ' - kawrae flash'))
 @section('body-class', 'page-post')
 
 @section('content')
@@ -27,7 +27,7 @@
           >
             <img
               src="{{ $imageUrl }}"
-              alt="{{ ($title ?? str_replace('-', ' ', $slug)) }}"
+              alt="{{ $post->title ?? str_replace('-', ' ', $post->slug) }}"
               class="w-full h-auto object-contain aspect-[4/5] transition duration-300 group-hover:scale-[1.01]"
               loading="eager"
               decoding="async"
@@ -42,14 +42,52 @@
       </div>
 
       <div class="p-5 sm:p-6 lg:p-8">
+        <header class="mb-4">
+          <h1 class="text-2xl md:text-3xl font-semibold text-zinc-900 dark:text-white">
+            {{ $post->title ?? str_replace('-', ' ', $post->slug) }}
+          </h1>
+
+          @if($post->category || $post->created_at)
+            <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+              @if($post->category)
+                {{ $post->category }}
+              @endif
+
+              @if($post->category && $post->created_at)
+                •
+              @endif
+
+              @if($post->created_at)
+                {{ $post->created_at->format('M Y') }}
+              @endif
+            </p>
+          @endif
+        </header>
+
         <div class="prose prose-zinc max-w-none dark:prose-invert">
-          {!! $post !!}
+          @if(!empty($post->body))
+            {!! $post->body !!}
+          @elseif(!empty($post->excerpt))
+            <p>{{ $post->excerpt }}</p>
+          @endif
         </div>
+
+        @if(!empty($tags))
+          <div class="mt-4 flex flex-wrap gap-2">
+            @foreach($tags as $tag)
+              <span class="badge">{{ $tag }}</span>
+            @endforeach
+          </div>
+        @endif
 
         <div class="mt-6 flex flex-wrap gap-3">
           @if(!empty($imageUrl))
-            <a href="{{ $imageUrl }}" download="{{ ($title ?? $slug) }}.jpg" class="btn">Download image</a>
-            <a href="{{ $imageUrl }}" target="_blank" rel="noopener" class="btn">Open original</a>
+            <a href="{{ $imageUrl }}" download="{{ ($post->title ?? $post->slug) }}.jpg" class="btn">
+              Download image
+            </a>
+            <a href="{{ $imageUrl }}" target="_blank" rel="noopener" class="btn">
+              Open original
+            </a>
           @endif
           <a href="{{ route('gallery.index') }}" class="btn">Back to gallery</a>
         </div>

@@ -1,33 +1,33 @@
 <nav class="site-nav">
   <div class="site-nav-inner">
 
-  @if (request()->routeIs('home'))
-    <a href="{{ route('home') }}" class="site-brand flex items-center group" aria-label="Flash Site">
-      <img src="/images/logo/logo2.webp" alt="Flash Site Logo"
-          class="h-8 w-auto object-contain block group-hover:hidden dark:hidden" />
+    @if (request()->routeIs('home'))
+      <a href="{{ route('home') }}" class="site-brand flex items-center group" aria-label="Flash Site">
+        <img src="/images/logo/logo2.webp" alt="Flash Site Logo"
+             class="h-8 w-auto object-contain block group-hover:hidden dark:hidden" />
 
-      <img src="/images/logo/logo1.webp" alt="Flash Site Logo Hover"
-          class="h-8 w-auto object-contain hidden group-hover:block dark:hidden dark:group-hover:hidden" />
+        <img src="/images/logo/logo1.webp" alt="Flash Site Logo Hover"
+             class="h-8 w-auto object-contain hidden group-hover:block dark:hidden dark:group-hover:hidden" />
 
-      <img src="/images/logo/logo2.webp" alt="Flash Site Logo Dark"
-          class="h-8 w-auto object-contain hidden dark:block dark:group-hover:hidden" />
+        <img src="/images/logo/logo2.webp" alt="Flash Site Logo Dark"
+             class="h-8 w-auto object-contain hidden dark:block dark:group-hover:hidden" />
 
-      <img src="/images/logo/logo3.webp" alt="Flash Site Logo Dark Hover"
-          class="h-8 w-auto object-contain hidden dark:group-hover:block" />
-    </a>
-  @else
-    <a href="{{ route('home') }}" class="site-brand flex items-center group" aria-label="Flash Site">
-      <img src="/images/logo/logo1.webp" alt="Flash Site Logo"
-          class="h-8 w-auto object-contain block group-hover:hidden dark:hidden" />
-      <img src="/images/logo/logo2.webp" alt="Flash Site Logo Hover"
-          class="h-8 w-auto object-contain hidden group-hover:block dark:group-hover:hidden" />
+        <img src="/images/logo/logo3.webp" alt="Flash Site Logo Dark Hover"
+             class="h-8 w-auto object-contain hidden dark:group-hover:block" />
+      </a>
+    @else
+      <a href="{{ route('home') }}" class="site-brand flex items-center group" aria-label="Flash Site">
+        <img src="/images/logo/logo1.webp" alt="Flash Site Logo"
+             class="h-8 w-auto object-contain block group-hover:hidden dark:hidden" />
+        <img src="/images/logo/logo2.webp" alt="Flash Site Logo Hover"
+             class="h-8 w-auto object-contain hidden group-hover:block dark:group-hover:hidden" />
 
-      <img src="/images/logo/logo3.webp" alt="Flash Site Logo Dark"
-          class="h-8 w-auto object-contain hidden dark:block dark:group-hover:hidden" />
-      <img src="/images/logo/logo2.webp" alt="Flash Site Logo Dark Hover"
-          class="h-8 w-auto object-contain hidden dark:group-hover:block" />
-    </a>
-  @endif
+        <img src="/images/logo/logo3.webp" alt="Flash Site Logo Dark"
+             class="h-8 w-auto object-contain hidden dark:block dark:group-hover:hidden" />
+        <img src="/images/logo/logo2.webp" alt="Flash Site Logo Dark Hover"
+             class="h-8 w-auto object-contain hidden dark:group-hover:block" />
+      </a>
+    @endif
 
     <div class="flex items-center gap-2 md:hidden">
       <button
@@ -60,9 +60,56 @@
     </div>
 
     <ul id="site-menu" class="hidden md:flex items-center gap-6">
-      <li><a href="{{ route('gallery.index') }}" class="site-link {{ request()->routeIs('gallery.*') ? 'site-link-active' : '' }}">Gallery</a></li>
-      <li><a href="{{ route('commissions.create') }}" class="site-link {{ request()->routeIs('commissions.*') ? 'site-link-active' : '' }}">Commissions</a></li>
-      <li><a href="{{ route('about') }}" class="site-link {{ request()->routeIs('about') ? 'site-link-active' : '' }}">About</a></li>
+      <li>
+        <a href="{{ route('gallery.index') }}"
+           class="site-link {{ request()->routeIs('gallery.*') ? 'site-link-active' : '' }}">
+          Gallery
+        </a>
+      </li>
+
+      <li>
+        <a href="{{ route('commissions.create') }}"
+           class="site-link {{ request()->routeIs('commissions.*') ? 'site-link-active' : '' }}">
+          Commissions
+        </a>
+      </li>
+
+      <li>
+        <a href="{{ route('about') }}"
+           class="site-link {{ request()->routeIs('about') ? 'site-link-active' : '' }}">
+          About
+        </a>
+      </li>
+
+      @auth
+        @can('admin')
+          <li>
+            <a href="{{ route('admin.dashboard') }}"
+              class="{{ request()->routeIs('admin.*') 
+                ? 'nav-admin nav-admin-active' 
+                : 'nav-admin' }}">
+              Admin
+            </a>
+          </li>
+        @endcan
+
+        <li>
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="site-link">
+              Logout
+            </button>
+          </form>
+        </li>
+      @endauth
+
+      @guest
+        <li>
+          <a href="{{ route('login') }}" class="site-link {{ request()->routeIs('login') ? 'site-link-active' : '' }}">
+              Login
+          </a>
+        </li>
+      @endguest
 
       <li>
         <button
@@ -83,9 +130,54 @@
 
   <div id="site-menu-mobile" class="md:hidden hidden border-t border-zinc-200 dark:border-zinc-800">
     <ul class="container py-3 space-y-2">
-      <li><a href="{{ route('gallery.index') }}" class="site-link block {{ request()->routeIs('gallery.*') ? 'site-link-active' : '' }}">Gallery</a></li>
-      <li><a href="{{ route('commissions.create') }}" class="site-link block {{ request()->routeIs('commissions.*') ? 'site-link-active' : '' }}">Commissions</a></li>
-      <li><a href="{{ route('about') }}" class="site-link block {{ request()->routeIs('about') ? 'site-link-active' : '' }}">About</a></li>
+      <li>
+        <a href="{{ route('gallery.index') }}"
+           class="site-link block {{ request()->routeIs('gallery.*') ? 'site-link-active' : '' }}">
+          Gallery
+        </a>
+      </li>
+
+      <li>
+        <a href="{{ route('commissions.create') }}"
+           class="site-link block {{ request()->routeIs('commissions.*') ? 'site-link-active' : '' }}">
+          Commissions
+        </a>
+      </li>
+
+      <li>
+        <a href="{{ route('about') }}"
+           class="site-link block {{ request()->routeIs('about') ? 'site-link-active' : '' }}">
+          About
+        </a>
+      </li>
+
+      @auth
+        @can('admin')
+          <li>
+            <a href="{{ route('admin.dashboard') }}"
+               class="site-link block {{ request()->routeIs('admin.*') ? 'site-link-active' : '' }}">
+              Admin
+            </a>
+          </li>
+        @endcan
+
+        <li>
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="site-link block text-left w-full">
+              Log out
+            </button>
+          </form>
+        </li>
+      @endauth
+
+      @guest
+        <li>
+          <a href="{{ route('login') }}" class="btn block w-full text-center">
+            Log in
+          </a>
+        </li>
+      @endguest
     </ul>
   </div>
 </nav>
