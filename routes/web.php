@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommissionsController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\CommissionController as AdminCommissionController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
@@ -37,4 +38,16 @@ Route::middleware(['auth', 'can:admin'])
 
         Route::post('/posts', [PostController::class, 'store'])
             ->name('posts.store');
+
+        Route::get('/commissions', [AdminCommissionController::class, 'index'])
+            ->name('commissions.index');
+
+        Route::get('/commissions/{commission}', [AdminCommissionController::class, 'show'])
+            ->name('commissions.show');
+
+        Route::patch('/commissions/{commission}', [AdminCommissionController::class, 'update'])
+            ->name('commissions.update');
+
+        Route::delete('/commissions/{commission}', [AdminCommissionController::class, 'destroy'])
+            ->name('commissions.destroy');
     });
